@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.1.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_1_0.dtd">
+<service-builder package-path="la.netco.solicitudes_sdisc.model">
+	<author>smontanez</author>
+	<namespace>solicitudes_sdisc</namespace>
+	
+	
+	
+    <entity name="Estado" remote-service="false" local-service="true" json-enabled="false" table="SOLISALAD_ESTADO" data-source="csjDBDatasource">
+        <column name="id_estado" type="int" primary="true" json-enabled="false" id-type="identity"></column>
+        <column name="nombre" type="String" json-enabled="false"></column>
+        <order>
+            <order-column name="nombre" order-by="asc"></order-column>
+        </order>
+        <finder name="Nombre" return-type="Estado" unique="true">
+            <finder-column name="nombre" comparator="="></finder-column>
+        </finder>
+    </entity>
+    <entity name="PerfilImplicado" remote-service="false" local-service="true" cache-enabled="true" json-enabled="false" table="SOLISALAD_PERFIL_IMPL" data-source="csjDBDatasource">
+        <column name="id_perfil" type="int" primary="true" json-enabled="false" id-type="identity"></column>
+        <column name="nombre" type="String" json-enabled="false"></column>
+    </entity>
+    <entity name="Implicado" local-service="true" remote-service="false" json-enabled="false" table="SOLISALAD_IMPLICADO" data-source="csjDBDatasource">
+        <column name="id_implicado" type="int" primary="true" json-enabled="false" id-type="identity"></column>
+        <column name="nombre" type="String" json-enabled="false"></column>
+        <column name="despacho_entidad" type="String" json-enabled="false"></column>
+        <column name="id_perfil" type="int" json-enabled="false"></column>
+        <column name="id_ciudad" type="Integer" convert-null="false" json-enabled="false"></column>
+        <column name="cod_entidad" type="String" convert-null="false" json-enabled="false"></column>
+        <column name="cod_especialidad" type="String" json-enabled="false" convert-null="false"></column>
+        <column name="id_delegado" type="Integer" convert-null="false"></column>
+    </entity>
+    <entity name="TipoDocumento" local-service="true" remote-service="false" json-enabled="false" table="SOLISALAD_TIPO_DOCUMENTO" data-source="csjDBDatasource">
+        <column name="id_tipo_doc" type="int" primary="true" json-enabled="false" id-type="identity" convert-null="false" db-name="id_tipo"></column>
+        <column name="nombre" type="String" json-enabled="false" convert-null="false"></column>
+    </entity>
+    <entity name="Solicitante" local-service="true" remote-service="false" json-enabled="false" table="SOLISALAD_SOLICITANTE" data-source="csjDBDatasource">
+        <column name="id_solicitante" type="int" primary="true" json-enabled="false" id-type="identity"></column>
+        <column name="nombres" type="String" json-enabled="false"></column>
+        <column name="apellidos" type="String" json-enabled="false"></column>
+        <column name="num_documento" type="String" json-enabled="false"></column>
+        <column name="telefono" type="String" json-enabled="false"></column>
+        <column name="email" type="String" json-enabled="false"></column>
+        <column name="direccion" type="String" json-enabled="false"></column>
+        <column name="id_tipo_doc" type="Integer" json-enabled="false" convert-null="false" ></column>
+        <column name="id_ciudad" type="Integer" json-enabled="false" convert-null="false" ></column>
+    </entity>
+    <entity name="Solicitud" remote-service="false" local-service="true" human-name="Solicitud" table="SOLISALAD_SOLICITUD" data-source="csjDBDatasource" json-enabled="false">
+        <column name="id_solicitud" type="int" primary="true" json-enabled="false" id-type="identity"></column>
+        <column name="hechos" type="String" json-enabled="false"></column>
+        <column name="pruebas" type="String" json-enabled="false"></column>
+        <column name="id_estado" type="int" json-enabled="false"></column>
+        <column name="id_implicado" type="int" json-enabled="false"></column>
+        <column name="id_solicitante" type="int" json-enabled="false"></column>
+        <column name="fechaRegistro" type="Date" json-enabled="false"></column>
+           
+    </entity>
+    <entity name="Parametros" remote-service="false" local-service="true" json-enabled="false" table="SOLISALAD_PARAMETROS" data-source="csjDBDatasource">
+        <column name="tiempo_proximo_caducar" type="int" json-enabled="false" primary="false"></column>
+        <column name="tiempo_caducidad" type="int" json-enabled="false"></column>
+        <column name="email_resposable" type="String" json-enabled="false"></column>
+        <column name="mensaje_email" type="String" json-enabled="false"></column>
+        <column name="asunto_email" type="String" json-enabled="false"></column>
+        <column name="id" type="int" primary="true" id-type="identity"></column>
+        <column name="repositoryId" type="long" json-enabled="false"></column>
+        <column name="folderId" type="long" json-enabled="false"></column>
+        <column name="userRepositoryId" type="long" json-enabled="false"></column>
+    </entity>
+    <entity name="FechaNoHabil" remote-service="false" local-service="true" cache-enabled="true" json-enabled="false" table="SOLISALAD_FECHA_NO_HABIL" data-source="csjDBDatasource">
+        <column name="id" type="int" primary="true" json-enabled="false" id-type="identity"></column>
+        <column name="fecha" type="Date" json-enabled="false"></column>
+        <column name="nombre" type="String" json-enabled="false"></column>
+    </entity>
+    <entity name="Departamento" local-service="true" remote-service="false" json-enabled="false" table="GEO_DEPARTAMENTO" data-source="csjDBDatasource">
+        <column name="id_departamento" type="int" primary="true" id-type="identity" json-enabled="false"></column>
+        <column name="nombre" type="String" json-enabled="false"></column>
+    </entity>
+    <entity name="Ciudad" local-service="true" remote-service="false" json-enabled="false" data-source="csjDBDatasource" table="GEO_CIUDAD">
+        <column name="id_ciudad" type="int" primary="true" id-type="identity" json-enabled="false"></column>
+        <column name="nombre" type="String" primary="false" json-enabled="false"></column>
+        <column name="id_departamento" type="int" json-enabled="false"></column>
+        <order>
+            <order-column name="nombre" order-by="asc"></order-column>
+        </order>
+        <finder name="departamento" return-type="Collection">
+            <finder-column name="id_departamento" comparator="="></finder-column>
+        </finder>
+    </entity>
+    <entity name="ResponsableRespuesta" local-service="true" remote-service="false" json-enabled="false" table="SOLISALAD_RESPONSABLE_RESPUESTA" data-source="csjDBDatasource">
+        <column name="id_responsable" type="int" primary="true" id-type="identity" lazy="true" json-enabled="false"></column>
+        <column name="respuesta" type="String" primary="false" json-enabled="false"></column>
+        <column name="fecha_respuesta" type="Date" json-enabled="false"></column>
+        <column name="nombre_usuario" type="String" json-enabled="false"></column>
+        <column name="id_solicitud" type="int" json-enabled="false"></column>
+    </entity>
+    <entity name="Entidad" local-service="true" remote-service="false" table="T051BAENTIGENE" data-source="csjDBDatasourceEntidades" session-factory="entSessionFactory" tx-manager="entTransactionManager" json-enabled="false">
+        <column name="codigo" type="String" primary="true" json-enabled="false" db-name="A051CODIENTI"></column>
+        <column name="nombre" type="String" json-enabled="false" db-name="A051DESCENTI"></column>
+    </entity>
+    <entity name="Especialidad" local-service="true" remote-service="false" table="T062BAESPEGENE" json-enabled="false" data-source="csjDBDatasourceEntidades" session-factory="entSessionFactory" tx-manager="entTransactionManager">
+        <column name="codigo" type="String" primary="true" db-name="A062CODIESPE" json-enabled="false"></column>
+        <column name="nombre" type="String" db-name="A062DESCESPE" json-enabled="false"></column>
+    </entity>
+    <entity name="Delegado" remote-service="false" local-service="true" json-enabled="false" table="SOLISALAD_DELEGADO" data-source="csjDBDatasource">
+        <column name="id_delegado" type="int" primary="true" json-enabled="false" id-type="identity"></column>
+        <column name="nombre" type="String" json-enabled="false"></column>
+        <order>
+            <order-column name="nombre" order-by="asc"></order-column>
+        </order>
+    </entity>
+</service-builder>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<liferay-portlet-app>
+	<portlet>
+		<portlet-name>solicitudes-sdisc-responsable</portlet-name>
+		<display-name>Solicitudes Sala Disciplinaria Responsable</display-name>
+		<icon>/icon.png</icon>
+		<instanceable>false</instanceable>
+		<ajaxable>false</ajaxable>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<css-class-wrapper>solicitudes-sdisc-responsable-portlet</css-class-wrapper>
+		<control-panel-entry-category>portal</control-panel-entry-category>
+		<control-panel-entry-weight>19</control-panel-entry-weight>
+		<add-default-resource>true</add-default-resource>
+	</portlet>
+	<portlet>
+		<portlet-name>solicitudes-sdisc-consulta</portlet-name>
+		<icon>/icon.png</icon>
+		<instanceable>false</instanceable>
+		<ajaxable>false</ajaxable>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<css-class-wrapper>solicitudes-sdisc-consulta-portlet</css-class-wrapper>
+		<control-panel-entry-category>portal</control-panel-entry-category>
+		<control-panel-entry-weight>20</control-panel-entry-weight>
+		<add-default-resource>true</add-default-resource>
+	</portlet>
+	<portlet>
+		<portlet-name>solicitudes-sdisc-solicitante</portlet-name>
+		<icon>/icon.png</icon>
+		<instanceable>false</instanceable>
+		<ajaxable>false</ajaxable>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<css-class-wrapper>solicitudes-sdisc-solicitante-portlet</css-class-wrapper>
+	</portlet>
+	<role-mapper>
+		<role-name>administrator</role-name>
+		<role-link>Administrator</role-link>
+	</role-mapper>
+</liferay-portlet-app>

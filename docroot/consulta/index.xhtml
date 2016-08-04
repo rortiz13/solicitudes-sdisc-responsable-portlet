@@ -1,0 +1,145 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets" template="layouts/template.xhtml">
+	<ui:define name="content">
+
+		<h:form>
+
+			<p:panel header="#{i18n['solicitudes-sdisc-responsable-buscador']}">
+
+
+				<p:messages id="messages" />
+
+
+				<h:panelGrid columns="1" width="100%">
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-responsable-fecha-registro']}" />
+					<h:panelGrid columns="4" width="70%">
+
+						<p:outputLabel for="desde" value="#{i18n['solicitudes-sdisc-responsable-desde']}" />
+						<p:calendar id="desde" value="#{adminSolicitudesBean.fechaInicial}" required="true" />
+
+						<p:outputLabel for="hasta" value="#{i18n['solicitudes-sdisc-responsable-hasta']}" />
+						<p:calendar id="hasta" value="#{adminSolicitudesBean.fechaFinal}" required="true" />
+
+					</h:panelGrid>
+					<br />
+					<h:panelGrid columns="2" width="100%">
+
+						<p:outputLabel value="#{i18n['solicitudes-sdisc-responsable-departamento']}" for="id_departamento_solicitante" />
+						<p:outputLabel value="#{i18n['solicitudes-sdisc-responsable-ciudad']}" for="id_ciudad_solicitante" />
+
+						<p:selectOneMenu required="false" id="id_departamento_solicitante" value="#{adminSolicitudesBean.id_departamento}">
+							<f:selectItem itemLabel="#{i18n['seleccione']}" />
+							<f:selectItems value="#{adminSolicitudesBean.departametosItems}" />
+
+							<p:ajax update="id_ciudad_solicitante" />
+						</p:selectOneMenu>
+
+						<p:selectOneMenu required="false" id="id_ciudad_solicitante" value="#{adminSolicitudesBean.id_ciudad_solicitante}">
+							<f:selectItem itemLabel="#{i18n['seleccione']}" />
+							<f:selectItems value="#{adminSolicitudesBean.ciudadesItems}" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="#{i18n['solicitudes-sdisc-responsable-tipo-perfil']}" for="id_perfil" />
+						<p:outputLabel value="#{i18n['solicitudes-sdisc-responsable-estado']}" for="id_estado" />
+
+						<p:selectOneMenu required="false" id="id_perfil" value="#{adminSolicitudesBean.id_perfil}">
+							<f:selectItem itemLabel="#{i18n['seleccione']}" />
+							<f:selectItems value="#{adminSolicitudesBean.perfilesItems}" />
+						</p:selectOneMenu>
+
+
+						<p:selectOneMenu required="false" id="id_estado" value="#{adminSolicitudesBean.id_estado}">
+							<f:selectItem itemLabel="#{i18n['seleccione']}" />
+							<f:selectItems value="#{adminSolicitudesBean.estadosItems}" />
+						</p:selectOneMenu>
+
+					</h:panelGrid>
+
+				</h:panelGrid>
+
+				<br />
+				<div align="center">
+					<p:commandButton ajax="false" value="#{i18n['solicitudes-sdisc-responsable-buscar']}" action="#{adminSolicitudesBean.cargaFiltrosDataModel}"></p:commandButton>
+				</div>
+				
+					</p:panel>
+		</h:form>		
+			<h:form id="formListado">				
+				<br />
+				<p:dataTable id="datosSolicitudes" value="#{adminSolicitudesBean.solicitudes}" var="solicitud" rows="10" paginator="true" paginatorPosition="bottom" lazy="true">
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{i18n['solicitudes-sdisc-responsable-fecha']}" />
+						</f:facet>
+						<h:outputText value="#{solicitud.fechaRegistro}">
+							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" timeZone="GMT-05:00" />
+						</h:outputText>
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{i18n['solicitudes-sdisc-responsable-informante']}" />
+						</f:facet>
+						<h:outputText value="#{solicitud.solicitante.nombres} #{solicitud.solicitante.apellidos}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{i18n['solicitudes-sdisc-responsable-implicado']}" />
+						</f:facet>
+						<h:outputText value="#{solicitud.implicado.nombre}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{i18n['solicitudes-sdisc-responsable-tipo-perfil']}" />
+						</f:facet>
+						<h:outputText value="#{solicitud.perfil.nombre}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{i18n['solicitudes-sdisc-responsable-hechos']}" />
+						</f:facet>
+						<h:outputText value="#{solicitud.hechos}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{i18n['solicitudes-sdisc-responsable-pruebas']}" />
+						</f:facet>
+						<h:outputText value="#{solicitud.pruebas}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="#{i18n['solicitudes-sdisc-responsable-estado']}" />
+						</f:facet>
+						<h:outputText value="#{solicitud.estado.nombre}" />
+					</p:column>
+
+					<p:column exportable="false">
+						<div class="#{adminSolicitudesBean.colorBandera(solicitud.antiguedad)}"></div>						
+					</p:column>
+					<p:column exportable="false">
+
+						<p:commandButton id="opcButton" value="#{i18n['solicitudes-sdisc-responsable-opciones']}" type="button" />
+
+						<p:tieredMenu overlay="true" trigger="opcButton" my="left top" at="left bottom" style="width:200px;">
+
+							<p:menuitem value="#{i18n['solicitudes-sdisc-responsable-detalle']}" action="detalle" ajax="false" icon="ui-icon-search">
+								<f:param name="idRegSeleccionado" value="#{solicitud.id_solicitud}" />
+							</p:menuitem>
+							
+						</p:tieredMenu>
+
+					</p:column>
+				</p:dataTable>
+
+		
+
+		</h:form>
+	</ui:define>
+</ui:composition>

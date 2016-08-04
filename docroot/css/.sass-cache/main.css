@@ -1,0 +1,27 @@
+.styleAmarillo {
+  background-color: yellow;
+  width: 25px;
+  height: 25px; }
+
+.styleRojo {
+  background-color: red;
+  width: 25px;
+  height: 25px; }
+
+.styleVerde {
+  background-color: green;
+  width: 25px;
+  height: 25px; }
+
+.columnLabelsDetalle {
+  padding: 0px;
+  text-align: left;
+  width: 30%;
+  font-weight: bold;
+  height: 30px; }
+
+.columnDatosDetalle {
+  width: 70%;
+  text-align: left;
+  padding-left: 10px; }
+

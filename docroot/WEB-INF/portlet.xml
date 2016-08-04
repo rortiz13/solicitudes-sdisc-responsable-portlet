@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+
+<portlet-app xmlns="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd http://java.sun.com/xml/ns/portlet/portlet-app_2_0.xsd" version="2.0">
+	<portlet>
+		<portlet-name>solicitudes-sdisc-responsable</portlet-name>
+		<display-name>Solicitudes Sala Disciplinaria Responsable</display-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>		
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/admin/index.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.edit</name>
+			<value>/params/index.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.default</name>
+			<value>/admin/index.xhtml</value>
+		</init-param>		
+		<init-param>
+			<name>javax.portlet.faces.preserveActionParams</name>
+			<value>true</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+			<portlet-mode>view</portlet-mode>
+            <portlet-mode>edit</portlet-mode>
+		</supports>
+		<portlet-info>
+			<title>Responder Quejas Sala Jurisdiccional Disciplinaria</title>
+			<short-title>Responder Quejas Sala Jurisdiccional Disciplinaria</short-title>
+			<keywords>Responder Quejas Sala Jurisdiccional Disciplinaria</keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>			
+	</portlet>
+	<portlet>
+		<portlet-name>solicitudes-sdisc-consulta</portlet-name>
+		<display-name>Solicitudes Sdisc Consulta</display-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>		
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/consulta/index.xhtml</value>
+		</init-param>
+		<init-param>
+			<name>javax.portlet.faces.default</name>
+			<value>/consulta/index.xhtml</value>
+		</init-param>		
+		<init-param>
+			<name>javax.portlet.faces.preserveActionParams</name>
+			<value>true</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>Quejas Sala Jurisdiccional Disciplinaria - Consulta</title>
+			<short-title>Quejas Sala Jurisdiccional Disciplinaria - Consulta</short-title>
+			<keywords>Quejas Sala Jurisdiccional Disciplinaria - Consulta</keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+	</portlet>
+	<portlet>
+		<portlet-name>solicitudes-sdisc-solicitante</portlet-name>
+		<display-name>Solicitudes Sala Disciplinaria - Solicitante</display-name>
+		<portlet-class>javax.portlet.faces.GenericFacesPortlet</portlet-class>
+		<init-param>
+			<name>javax.portlet.faces.defaultViewId.view</name>
+			<value>/views/view.xhtml</value>
+		</init-param>
+		<expiration-cache>0</expiration-cache>
+		<supports>
+			<mime-type>text/html</mime-type>
+		</supports>
+		<portlet-info>
+			<title>Solicitudes Sala Disciplinaria - Solicitante</title>
+			<short-title>Solicitudes Sala Disciplinaria - Solicitante</short-title>
+			<keywords>Solicitudes Sala Disciplinaria - Solicitante</keywords>
+		</portlet-info>
+		<security-role-ref>
+			<role-name>administrator</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>guest</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>power-user</role-name>
+		</security-role-ref>
+		<security-role-ref>
+			<role-name>user</role-name>
+		</security-role-ref>
+	</portlet>
+</portlet-app>

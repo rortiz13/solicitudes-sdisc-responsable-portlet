@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="la.netco.solicitudes_sdisc.model.service.CiudadLocalService" class="la.netco.solicitudes_sdisc.model.service.impl.CiudadLocalServiceImpl" />
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.CiudadPersistence" class="la.netco.solicitudes_sdisc.model.service.persistence.CiudadPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasource" />
+	</bean>
+	<bean id="la.netco.solicitudes_sdisc.model.service.DelegadoLocalService" class="la.netco.solicitudes_sdisc.model.service.impl.DelegadoLocalServiceImpl" />
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.DelegadoPersistence" class="la.netco.solicitudes_sdisc.model.service.persistence.DelegadoPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasource" />
+	</bean>
+	<bean id="la.netco.solicitudes_sdisc.model.service.DepartamentoLocalService" class="la.netco.solicitudes_sdisc.model.service.impl.DepartamentoLocalServiceImpl" />
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.DepartamentoPersistence" class="la.netco.solicitudes_sdisc.model.service.persistence.DepartamentoPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasource" />
+	</bean>
+	<bean id="la.netco.solicitudes_sdisc.model.service.EntidadLocalService" class="la.netco.solicitudes_sdisc.model.service.impl.EntidadLocalServiceImpl" />
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.EntidadPersistence" class="la.netco.solicitudes_sdisc.model.service.persistence.EntidadPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasourceEntidades" />
+		<property name="sessionFactory" ref="entSessionFactory" />
+	</bean>
+	<bean id="la.netco.solicitudes_sdisc.model.service.EspecialidadLocalService" class="la.netco.solicitudes_sdisc.model.service.impl.EspecialidadLocalServiceImpl" />
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.EspecialidadPersistence" class="la.netco.solicitudes_sdisc.model.service.persistence.EspecialidadPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasourceEntidades" />
+		<property name="sessionFactory" ref="entSessionFactory" />
+	</bean>
+	<bean id="la.netco.solicitudes_sdisc.model.service.EstadoLocalService" class="la.netco.solicitudes_sdisc.model.service.impl.EstadoLocalServiceImpl" />
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.EstadoPersistence" class="la.netco.solicitudes_sdisc.model.service.persistence.EstadoPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasource" />
+	</bean>
+	<bean id="la.netco.solicitudes_sdisc.model.service.FechaNoHabilLocalService" class="la.netco.solicitudes_sdisc.model.service.impl.FechaNoHabilLocalServiceImpl" />
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.FechaNoHabilPersistence" class="la.netco.solicitudes_sdisc.model.service.persistence.FechaNoHabilPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasource" />
+	</bean>
+	<bean id="la.netco.solicitudes_sdisc.model.service.ImplicadoLocalService" class="la.netco.solicitudes_sdisc.model.service.impl.ImplicadoLocalServiceImpl" />
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.ImplicadoPersistence" class="la.netco.solicitudes_sdisc.model.service.persistence.ImplicadoPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasource" />
+	</bean>
+	<bean id="la.netco.solicitudes_sdisc.model.service.ParametrosLocalService" class="la.netco.solicitudes_sdisc.model.service.impl.ParametrosLocalServiceImpl" />
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.ParametrosPersistence" class="la.netco.solicitudes_sdisc.model.service.persistence.ParametrosPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasource" />
+	</bean>
+	<bean id="la.netco.solicitudes_sdisc.model.service.PerfilImplicadoLocalService" class="la.netco.solicitudes_sdisc.model.service.impl.PerfilImplicadoLocalServiceImpl" />
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.PerfilImplicadoPersistence" class="la.netco.solicitudes_sdisc.model.service.persistence.PerfilImplicadoPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasource" />
+	</bean>
+	<bean id="la.netco.solicitudes_sdisc.model.service.ResponsableRespuestaLocalService" class="la.netco.solicitudes_sdisc.model.service.impl.ResponsableRespuestaLocalServiceImpl" />
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.ResponsableRespuestaPersistence" class="la.netco.solicitudes_sdisc.model.service.persistence.ResponsableRespuestaPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasource" />
+	</bean>
+	<bean id="la.netco.solicitudes_sdisc.model.service.SolicitanteLocalService" class="la.netco.solicitudes_sdisc.model.service.impl.SolicitanteLocalServiceImpl" />
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.SolicitantePersistence" class="la.netco.solicitudes_sdisc.model.service.persistence.SolicitantePersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasource" />
+	</bean>
+	<bean id="la.netco.solicitudes_sdisc.model.service.SolicitudLocalService" class="la.netco.solicitudes_sdisc.model.service.impl.SolicitudLocalServiceImpl" />
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.SolicitudPersistence" class="la.netco.solicitudes_sdisc.model.service.persistence.SolicitudPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasource" />
+	</bean>
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.SolicitudFinder" class="la.netco.solicitudes_sdisc.model.service.persistence.SolicitudFinderImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasource" />
+	</bean>
+	<bean id="la.netco.solicitudes_sdisc.model.service.TipoDocumentoLocalService" class="la.netco.solicitudes_sdisc.model.service.impl.TipoDocumentoLocalServiceImpl" />
+	<bean id="la.netco.solicitudes_sdisc.model.service.persistence.TipoDocumentoPersistence" class="la.netco.solicitudes_sdisc.model.service.persistence.TipoDocumentoPersistenceImpl" parent="basePersistence">
+		<property name="dataSource" ref="csjDBDatasource" />
+	</bean>
+</beans>

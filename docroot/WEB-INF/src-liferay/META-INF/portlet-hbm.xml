@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="la.netco.solicitudes_sdisc.model.model.Ciudad" />
+	<import class="la.netco.solicitudes_sdisc.model.model.Delegado" />
+	<import class="la.netco.solicitudes_sdisc.model.model.Departamento" />
+	<import class="la.netco.solicitudes_sdisc.model.model.Entidad" />
+	<import class="la.netco.solicitudes_sdisc.model.model.Especialidad" />
+	<import class="la.netco.solicitudes_sdisc.model.model.Estado" />
+	<import class="la.netco.solicitudes_sdisc.model.model.FechaNoHabil" />
+	<import class="la.netco.solicitudes_sdisc.model.model.Implicado" />
+	<import class="la.netco.solicitudes_sdisc.model.model.Parametros" />
+	<import class="la.netco.solicitudes_sdisc.model.model.PerfilImplicado" />
+	<import class="la.netco.solicitudes_sdisc.model.model.ResponsableRespuesta" />
+	<import class="la.netco.solicitudes_sdisc.model.model.Solicitante" />
+	<import class="la.netco.solicitudes_sdisc.model.model.Solicitud" />
+	<import class="la.netco.solicitudes_sdisc.model.model.TipoDocumento" />
+	<class name="la.netco.solicitudes_sdisc.model.model.impl.CiudadImpl" table="GEO_CIUDAD">
+		<cache usage="read-write" />
+		<id name="id_ciudad" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="id_departamento" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+	</class>
+	<class name="la.netco.solicitudes_sdisc.model.model.impl.DelegadoImpl" table="SOLISALAD_DELEGADO">
+		<cache usage="read-write" />
+		<id name="id_delegado" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="la.netco.solicitudes_sdisc.model.model.impl.DepartamentoImpl" table="GEO_DEPARTAMENTO">
+		<cache usage="read-write" />
+		<id name="id_departamento" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="la.netco.solicitudes_sdisc.model.model.impl.EntidadImpl" table="T051BAENTIGENE">
+		<cache usage="read-write" />
+		<id name="codigo" column="A051CODIENTI" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" column="A051DESCENTI" />
+	</class>
+	<class name="la.netco.solicitudes_sdisc.model.model.impl.EspecialidadImpl" table="T062BAESPEGENE">
+		<cache usage="read-write" />
+		<id name="codigo" column="A062CODIESPE" type="java.lang.String">
+			<generator class="assigned" />
+		</id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" column="A062DESCESPE" />
+	</class>
+	<class name="la.netco.solicitudes_sdisc.model.model.impl.EstadoImpl" table="SOLISALAD_ESTADO">
+		<cache usage="read-write" />
+		<id name="id_estado" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="la.netco.solicitudes_sdisc.model.model.impl.FechaNoHabilImpl" table="SOLISALAD_FECHA_NO_HABIL">
+		<cache usage="read-write" />
+		<id name="id" column="id_" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="fecha" type="org.hibernate.type.TimestampType" />
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="la.netco.solicitudes_sdisc.model.model.impl.ImplicadoImpl" table="SOLISALAD_IMPLICADO">
+		<cache usage="read-write" />
+		<id name="id_implicado" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="despacho_entidad" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="id_perfil" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="id_ciudad" type="org.hibernate.type.IntegerType" />
+		<property name="cod_entidad" type="org.hibernate.type.StringType" />
+		<property name="cod_especialidad" type="org.hibernate.type.StringType" />
+		<property name="id_delegado" type="org.hibernate.type.IntegerType" />
+	</class>
+	<class name="la.netco.solicitudes_sdisc.model.model.impl.ParametrosImpl" table="SOLISALAD_PARAMETROS">
+		<cache usage="read-write" />
+		<id name="id" column="id_" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="tiempo_proximo_caducar" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="tiempo_caducidad" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="email_resposable" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="mensaje_email" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="asunto_email" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="repositoryId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="folderId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userRepositoryId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+	</class>
+	<class name="la.netco.solicitudes_sdisc.model.model.impl.PerfilImplicadoImpl" table="SOLISALAD_PERFIL_IMPL">
+		<cache usage="read-write" />
+		<id name="id_perfil" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="nombre" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="la.netco.solicitudes_sdisc.model.model.impl.ResponsableRespuestaImpl" table="SOLISALAD_RESPONSABLE_RESPUESTA">
+		<cache usage="read-write" />
+		<id name="id_responsable" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="respuesta" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="fecha_respuesta" type="org.hibernate.type.TimestampType" />
+		<property name="nombre_usuario" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="id_solicitud" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+	</class>
+	<class name="la.netco.solicitudes_sdisc.model.model.impl.SolicitanteImpl" table="SOLISALAD_SOLICITANTE">
+		<cache usage="read-write" />
+		<id name="id_solicitante" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="nombres" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="apellidos" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="num_documento" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="telefono" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="email" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="direccion" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="id_tipo_doc" type="org.hibernate.type.IntegerType" />
+		<property name="id_ciudad" type="org.hibernate.type.IntegerType" />
+	</class>
+	<class name="la.netco.solicitudes_sdisc.model.model.impl.SolicitudImpl" table="SOLISALAD_SOLICITUD">
+		<cache usage="read-write" />
+		<id name="id_solicitud" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="hechos" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="pruebas" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="id_estado" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="id_implicado" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="id_solicitante" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="fechaRegistro" type="org.hibernate.type.TimestampType" />
+	</class>
+	<class name="la.netco.solicitudes_sdisc.model.model.impl.TipoDocumentoImpl" table="SOLISALAD_TIPO_DOCUMENTO">
+		<cache usage="read-write" />
+		<id name="id_tipo_doc" column="id_tipo" type="int">
+			<generator class="identity" />
+		</id>
+		<property name="nombre" type="org.hibernate.type.StringType" />
+	</class>
+</hibernate-mapping>

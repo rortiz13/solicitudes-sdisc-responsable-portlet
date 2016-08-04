@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head />
+	<h:body>
+
+		<h:form>
+		
+		<p:messages></p:messages>
+
+		<p:panel header="#{i18n['solicitudes-sdisc-solicitante-info-importante']}">
+
+			<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-info-inicial']}" />
+
+		</p:panel>
+		
+		<br/>
+
+		<p:panel header="#{i18n['solicitudes-sdisc-solicitante-datos-informante']}">
+
+			<h:panelGrid  width="100%">				
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-campos-requeridos']}" styleClass="portlet-msg-info" />
+			</h:panelGrid>
+			<br/>
+			
+			<h:panelGrid columns="2" width="100%">			
+				
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-nombres']}" for="nombres_solicitante" />
+				<p:inputText value="#{solicitudBean.datosSolicitud.nombres_solicitante}" required="true" id="nombres_solicitante"></p:inputText>
+				
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-apellidos']}" for="apellidos_solicitante" />
+				<p:inputText value="#{solicitudBean.datosSolicitud.apellidos_solicitante}" required="true"  id="apellidos_solicitante"></p:inputText>
+
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-tipo-documento']}" for="id_tipo_doc_solicitante" />
+				<p:selectOneMenu required="true" id="id_tipo_doc_solicitante"
+					value="#{solicitudBean.datosSolicitud.id_tipo_doc_solicitante}">
+					<f:selectItem itemLabel="#{i18n['seleccione']}" />
+					<f:selectItems value="#{solicitudBean.tipoDocumentosItems}" />
+				</p:selectOneMenu>
+					
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-num-documento']}" for="num_documento_solicitante" />
+				<p:inputText value="#{solicitudBean.datosSolicitud.num_documento_solicitante}" required="true"  id="num_documento_solicitante"></p:inputText>
+
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-telefono-solicitante']}" for="telefono_solicitante" />
+				<p:inputText value="#{solicitudBean.datosSolicitud.telefono_solicitante}" required="false"  id="telefono_solicitante"></p:inputText>
+
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-email-solicitante']}" for="email_solicitante" />
+				<p:inputText value="#{solicitudBean.datosSolicitud.email_solicitante}" required="false"  id="email_solicitante"></p:inputText>
+
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-direccion-solicitante']}" for="direccion_solicitante" />
+				<p:inputText value="#{solicitudBean.datosSolicitud.direccion_solicitante}" required="true"  id="direccion_solicitante"></p:inputText>
+
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-departamento']}" for="id_departamento_solicitante" />
+				
+				<p:selectOneMenu required="true" id="id_departamento_solicitante" 
+					value="#{solicitudBean.datosSolicitud.id_departamento_solicitante}">
+					<f:selectItem itemLabel="#{i18n['seleccione']}" />
+					<f:selectItems value="#{solicitudBean.departametosItems}" />
+					
+					<p:ajax update="id_ciudad_solicitante"  /> 
+				</p:selectOneMenu>
+				
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-ciudad']}" for="id_ciudad_solicitante" />
+				
+				<p:selectOneMenu required="true" id="id_ciudad_solicitante"
+					value="#{solicitudBean.datosSolicitud.id_ciudad_solicitante}">
+					<f:selectItem itemLabel="#{i18n['seleccione']}" />
+					<f:selectItems value="#{solicitudBean.ciudadesItems}" />
+				</p:selectOneMenu>
+				
+			</h:panelGrid>
+
+		</p:panel>
+
+		<br/>
+		
+		<p:panel header="#{i18n['solicitudes-sdisc-solicitante-datos-implicado']}">
+
+			<h:panelGrid  width="100%">				
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-campos-requeridos']}" styleClass="portlet-msg-info" />
+			</h:panelGrid>
+			<br/>
+			<h:panelGrid columns="2"  width="100%" columnClasses="columnLabelsDetalle,columnDatosDetalle" >			
+				
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-nombre-implicado']}" for="nombre_implicado" />
+				<p:inputText value="#{solicitudBean.datosSolicitud.nombre_implicado}" required="true" id="nombre_implicado"></p:inputText>
+				
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-perfil-implicado']}" for="id_perfil" />
+				<p:selectOneMenu required="true"  id="id_perfil" 
+					value="#{solicitudBean.datosSolicitud.id_perfil}">
+					<f:selectItem itemLabel="#{i18n['seleccione']}" />
+					<f:selectItems value="#{solicitudBean.perfilesItems}" />
+					<p:ajax update="datosdespacho"  /> 
+				</p:selectOneMenu>
+			</h:panelGrid>
+			
+			<h:panelGrid width="100%" id="datosdespacho">
+			
+				<h:panelGrid columns="2" columnClasses="columnLabelsDetalle,columnDatosDetalle"  width="100%" rendered="#{!solicitudBean.perfilJuezMagistradoAbogado}">	
+					<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-despacho']}" for="despacho_entidad" />
+					<p:inputText value="#{solicitudBean.datosSolicitud.despacho_entidad}" required="true" id="despacho_entidad"></p:inputText>
+				</h:panelGrid>
+				
+				<h:panelGrid columns="2" columnClasses="columnLabelsDetalle,columnDatosDetalle"  width="100%" rendered="#{solicitudBean.perfilJuezMagistrado}">	
+							<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-numero-despacho']}" for="juez_Nro_despacho"  />
+					<h:inputText value="#{solicitudBean.numeroDespacho}" id="juez_Nro_despacho">
+					</h:inputText>
+					<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-entidad']}" for="id_entidad_implicado" />
+					
+					<p:selectOneMenu required="true" id="id_entidad_implicado" 
+						value="#{solicitudBean.datosSolicitud.id_entidad_implicado}">
+						<f:selectItem itemLabel="#{i18n['seleccione']}" />
+						<f:selectItems value="#{solicitudBean.entidadesItems}" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-especialidad']}" for="id_especialidad_implicado" />
+					
+					<p:selectOneMenu required="true" id="id_especialidad_implicado"
+						value="#{solicitudBean.datosSolicitud.id_especialidad_implicado}">
+						<f:selectItem itemLabel="#{i18n['seleccione']}" />
+						<f:selectItems value="#{solicitudBean.especilidadesItems}" />
+					</p:selectOneMenu>
+				
+				</h:panelGrid>
+				
+				<h:panelGrid columns="2"  columnClasses="columnLabelsDetalle,columnDatosDetalle"  width="100%" rendered="#{solicitudBean.perfilFiscal}">	
+
+					<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-delegado-ante']}" for="id_delegado" />
+					
+					<p:selectOneMenu required="true" id="id_delegado" 
+						value="#{solicitudBean.datosSolicitud.id_delegado}">
+						<f:selectItem itemLabel="#{i18n['seleccione']}" />
+						<f:selectItems value="#{solicitudBean.delegadoItems}" />
+					</p:selectOneMenu>
+
+				</h:panelGrid>
+				
+				
+			</h:panelGrid>	
+				
+			
+		<h:panelGrid columns="2"  width="100%" columnClasses="columnLabelsDetalle,columnDatosDetalle"  >	
+				
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-departamento']}" for="id_departamento_implicado" />
+				
+				<p:selectOneMenu required="true" id="id_departamento_implicado" 
+					value="#{solicitudBean.datosSolicitud.id_departamento_implicado}">
+					<f:selectItem itemLabel="#{i18n['seleccione']}" />
+					<f:selectItems value="#{solicitudBean.departametosItems}" />					
+					<p:ajax update="id_ciudad_implicado"  /> 
+				</p:selectOneMenu>
+				
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-ciudad']}" for="id_ciudad_implicado" />
+				
+				<p:selectOneMenu required="true" id="id_ciudad_implicado"
+					value="#{solicitudBean.datosSolicitud.id_ciudad_implicado}">
+					<f:selectItem itemLabel="#{i18n['seleccione']}" />
+					<f:selectItems value="#{solicitudBean.ciudadesImplicadoItems}" />
+				</p:selectOneMenu>
+				
+				
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-hechos']}" for="hechos" />
+				<p:inputTextarea cols="80" rows="8" value="#{solicitudBean.datosSolicitud.hechos}" required="true" id="hechos"></p:inputTextarea>
+				
+				<p:outputLabel value="#{i18n['solicitudes-sdisc-solicitante-pruebas']}" for="pruebas" />
+				<p:inputTextarea cols="80" rows="8" value="#{solicitudBean.datosSolicitud.pruebas}" required="false" id="pruebas"></p:inputTextarea>
+				
+			
+			</h:panelGrid>
+			
+		</p:panel>
+		<br/>
+		<div align="center">
+				<p:commandButton ajax="false" action="#{solicitudBean.crearRegistro}" value="#{i18n['solicitudes-sdisc-solicitante-enviar']}" ></p:commandButton>
+		</div>
+		</h:form>
+				<br/>
+				<p:panel header="#{i18n['solicitudes-sdisc-solicitante-anexos']}">
+				<h:form enctype="multipart/form-data" id="formUploadFiles">
+				<h:panelGrid width="100%">
+					<p:messages for="uploadFile" />
+				</h:panelGrid>
+				<p:fileUpload fileUploadListener="#{solicitudBean.uploadFile}"  mode="advanced" id="uploadFile" multiple="false" update="formUploadFiles"
+					allowTypes="/(\.|\/)(pdf)$/" auto="true" uploadLabel="#{i18n['solicitudes-sdisc-solicitante-guardar-archivo']}" cancelLabel="#{i18n['solicitudes-sdisc-solicitante-cancelar']}"
+					label="#{i18n['solicitudes-sdisc-solicitante-seleccionar-archivo']}" showButtons="true" sizeLimit="#{solicitudBean.fileSizeLimit}" required="false" />
+				<p:dataList rendered="#{!empty solicitudBean.filesUploads}" value="#{solicitudBean.filesUploads}" var="file">
+					<h:outputText value="#{file.fileName}" />				
+				</p:dataList>
+			</h:form>
+		</p:panel>
+		
+	</h:body>
+
+
+</f:view>

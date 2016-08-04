@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:ui="http://java.sun.com/jsf/facelets" template="layouts/template.xhtml">
+	<ui:define name="content">
+
+		<h:form>
+
+			<p:panel header="#{i18n['solicitudes-sdisc-responsable-parametros']}">
+
+				<h:panelGrid width="100%">
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-campos-requeridos']}" styleClass="portlet-msg-info" />
+				</h:panelGrid>
+
+				<p:messages id="messages" />
+
+				<br />
+
+				<h:panelGrid columns="2" width="100%">
+
+					<p:outputLabel value="#{i18n['solicitudes-sdisc-param-tiempo-proximo-caducar']}" for="tiempo_proximo_caducar" />
+					<p:inputText value="#{parametrosBean.tiempoProximoCaducar}" required="true" id="tiempo_proximo_caducar" />
+
+					<p:outputLabel value="#{i18n['solicitudes-sdisc-param-tiempo-caducidad']}" for="tiempo_caducidad" />
+					<p:inputText value="#{parametrosBean.tiempoCaducidad}" required="true" id="tiempo_caducidad" />
+
+
+					<p:outputLabel value="#{i18n['solicitudes-sdisc-param-email-resposable']}" for="email_resposable" />
+					<p:inputText value="#{parametrosBean.emailResposable}" required="true" id="email_resposable" />
+
+					<p:outputLabel value="#{i18n['solicitudes-sdisc-param-asunto-email']}" for="asunto_email" />
+					<p:inputText value="#{parametrosBean.asuntoEmail}" required="true" id="asunto_email" />
+
+					<p:outputLabel value="#{i18n['solicitudes-sdisc-param-mensaje-email']}" for="mensaje_email" />
+					<p:inputTextarea cols="80" rows="8" value="#{parametrosBean.mensajeEmail}" required="true" id="mensaje_email"></p:inputTextarea>
+
+					<p:outputLabel value="#{i18n['solicitudes-sdisc-responsable-id-repositorio']}" for="repositoryId" />
+					<p:inputText value="#{parametrosBean.repositoryId}" required="true" id="repositoryId" />
+
+					<p:outputLabel value="#{i18n['solicitudes-sdisc-responsable-id-carpeta']}" for="folderId" />
+					<p:inputText value="#{parametrosBean.folderId}" required="true" id="folderId" />
+
+					<p:outputLabel value="#{i18n['solicitudes-sdisc-responsable-id-usuario-repo']}" for="userRepositoryId" />
+					<p:inputText value="#{parametrosBean.userRepositoryId}" required="true" id="userRepositoryId" />
+
+
+
+				</h:panelGrid>
+
+			</p:panel>
+			<br />
+			<div align="center">
+
+				<p:commandButton ajax="false" action="#{parametrosBean.actualizarRegistro}" value="#{i18n['solicitudes-sdisc-param-asunto-actualizar']}"></p:commandButton>
+
+			</div>
+
+
+
+		</h:form>
+	</ui:define>
+</ui:composition>

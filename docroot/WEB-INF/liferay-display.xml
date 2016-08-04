@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE display PUBLIC "-//Liferay//DTD Display 6.1.0//EN" "http://www.liferay.com/dtd/liferay-display_6_1_0.dtd">
+
+<display>
+	<category name="category.hidden">
+		<portlet id="solicitudes-sdisc-responsable" />
+		<portlet id="solicitudes-sdisc-consulta" />
+	</category>
+	<category name="category.portletsCSJ">
+		<portlet id="solicitudes-sdisc-solicitante" />
+	</category>
+</display>

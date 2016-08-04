@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#admin#*" PATH="/admin/*" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#admin#*:0" NAME="item" PATH="/admin/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="transaccionExitosa::#admin#index.xhtml"
+    NAME="output" PATH="/admin/index.xhtml"
+    TARGET="rules:#admin#index.xhtml" TITLE="transaccionExitosa" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#admin#index.xhtml" PATH="/admin/index.xhtml"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#params#*" PATH="/params/*"
+  SHAPE="32,129,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#params#*:0" NAME="item" PATH="/params/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="transaccionExitosa::#params#index.xhtml"
+    NAME="output" PATH="/params/index.xhtml"
+    TARGET="rules:#params#index.xhtml" TITLE="transaccionExitosa" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#params#index.xhtml"
+  PATH="/params/index.xhtml" SHAPE="240,145,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#views#*" PATH="/views/*" SHAPE="32,241,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#views#*:0" NAME="item" PATH="/views/*" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="transaccionExitosa::#views#finalizar.xhtml"
+    NAME="output" PATH="/views/finalizar.xhtml"
+    TARGET="rules:#views#finalizar.xhtml" TITLE="transaccionExitosa" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#views#finalizar.xhtml"
+  PATH="/views/finalizar.xhtml" SHAPE="240,257,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

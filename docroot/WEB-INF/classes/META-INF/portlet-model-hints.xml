@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="la.netco.solicitudes_sdisc.model.model.Ciudad">
+		<field name="id_ciudad" type="int" />
+		<field name="nombre" type="String" />
+		<field name="id_departamento" type="int" />
+	</model>
+	<model name="la.netco.solicitudes_sdisc.model.model.Delegado">
+		<field name="id_delegado" type="int" />
+		<field name="nombre" type="String" />
+	</model>
+	<model name="la.netco.solicitudes_sdisc.model.model.Departamento">
+		<field name="id_departamento" type="int" />
+		<field name="nombre" type="String" />
+	</model>
+	<model name="la.netco.solicitudes_sdisc.model.model.Entidad">
+		<field name="codigo" type="String" />
+		<field name="nombre" type="String" />
+	</model>
+	<model name="la.netco.solicitudes_sdisc.model.model.Especialidad">
+		<field name="codigo" type="String" />
+		<field name="nombre" type="String" />
+	</model>
+	<model name="la.netco.solicitudes_sdisc.model.model.Estado">
+		<field name="id_estado" type="int" />
+		<field name="nombre" type="String" />
+	</model>
+	<model name="la.netco.solicitudes_sdisc.model.model.FechaNoHabil">
+		<field name="id" type="int" />
+		<field name="fecha" type="Date" />
+		<field name="nombre" type="String" />
+	</model>
+	<model name="la.netco.solicitudes_sdisc.model.model.Implicado">
+		<field name="id_implicado" type="int" />
+		<field name="nombre" type="String" />
+		<field name="despacho_entidad" type="String" />
+		<field name="id_perfil" type="int" />
+		<field name="id_ciudad" type="Integer" />
+		<field name="cod_entidad" type="String" />
+		<field name="cod_especialidad" type="String" />
+		<field name="id_delegado" type="Integer" />
+	</model>
+	<model name="la.netco.solicitudes_sdisc.model.model.Parametros">
+		<field name="tiempo_proximo_caducar" type="int" />
+		<field name="tiempo_caducidad" type="int" />
+		<field name="email_resposable" type="String" />
+		<field name="mensaje_email" type="String" />
+		<field name="asunto_email" type="String" />
+		<field name="id" type="int" />
+		<field name="repositoryId" type="long" />
+		<field name="folderId" type="long" />
+		<field name="userRepositoryId" type="long" />
+	</model>
+	<model name="la.netco.solicitudes_sdisc.model.model.PerfilImplicado">
+		<field name="id_perfil" type="int" />
+		<field name="nombre" type="String" />
+	</model>
+	<model name="la.netco.solicitudes_sdisc.model.model.ResponsableRespuesta">
+		<field name="id_responsable" type="int" />
+		<field name="respuesta" type="String" />
+		<field name="fecha_respuesta" type="Date" />
+		<field name="nombre_usuario" type="String" />
+		<field name="id_solicitud" type="int" />
+	</model>
+	<model name="la.netco.solicitudes_sdisc.model.model.Solicitante">
+		<field name="id_solicitante" type="int" />
+		<field name="nombres" type="String" />
+		<field name="apellidos" type="String" />
+		<field name="num_documento" type="String" />
+		<field name="telefono" type="String" />
+		<field name="email" type="String" />
+		<field name="direccion" type="String" />
+		<field name="id_tipo_doc" type="Integer" />
+		<field name="id_ciudad" type="Integer" />
+	</model>
+	<model name="la.netco.solicitudes_sdisc.model.model.Solicitud">
+		<field name="id_solicitud" type="int" />
+		<field name="hechos" type="String" />
+		<field name="pruebas" type="String" />
+		<field name="id_estado" type="int" />
+		<field name="id_implicado" type="int" />
+		<field name="id_solicitante" type="int" />
+		<field name="fechaRegistro" type="Date" />
+	</model>
+	<model name="la.netco.solicitudes_sdisc.model.model.TipoDocumento">
+		<field name="id_tipo_doc" type="int" />
+		<field name="nombre" type="String" />
+	</model>
+</model-hints>

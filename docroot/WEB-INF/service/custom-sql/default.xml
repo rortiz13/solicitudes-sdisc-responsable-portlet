@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<custom-sql>
+	<sql
+		id="la.netco.solicitudes_sdisc.model.service.persistence.SolicitudFinder.findByFields">
+    	<![CDATA[
+        SELECT {SOLISALAD_SOLICITUD.*}
+        FROM SOLISALAD_SOLICITUD
+
+		INNER JOIN SOLISALAD_SOLICITANTE informante ON informante.id_solicitante = SOLISALAD_SOLICITUD.id_solicitante
+		INNER JOIN SOLISALAD_IMPLICADO implicado ON implicado.id_implicado = SOLISALAD_SOLICITUD.id_implicado
+		INNER JOIN SOLISALAD_ESTADO estado ON estado.id_estado = SOLISALAD_SOLICITUD.id_estado
+		INNER JOIN SOLISALAD_PERFIL_IMPL perfilimplicado ON implicado.id_perfil = perfilimplicado.id_perfil
+		LEFT JOIN municipio ON municipio.id_mcpio = informante.id_ciudad 
+		
+		 WHERE  fechaRegistro >= ?   AND  fechaRegistro <= ?
+		 
+		 AND  municipio.id_mcpio = ?
+		
+		 AND  SOLISALAD_SOLICITUD.id_estado = ?
+		 
+		 AND  implicado.id_perfil = ?
+		 
+		 ORDER BY id_solicitud
+		 
+     ]]>
+	</sql>
+	
+	<sql
+		id="la.netco.solicitudes_sdisc.model.service.persistence.SolicitudFinder.countByFields">
+    	<![CDATA[
+    	
+        SELECT COUNT(SOLISALAD_SOLICITUD.id_solicitud) AS COUNT_VALUE
+        
+        FROM SOLISALAD_SOLICITUD
+
+		INNER JOIN SOLISALAD_SOLICITANTE informante ON informante.id_solicitante = SOLISALAD_SOLICITUD.id_solicitante
+		INNER JOIN SOLISALAD_IMPLICADO implicado ON implicado.id_implicado = SOLISALAD_SOLICITUD.id_implicado
+		INNER JOIN SOLISALAD_ESTADO estado ON estado.id_estado = SOLISALAD_SOLICITUD.id_estado
+		INNER JOIN SOLISALAD_PERFIL_IMPL perfilimplicado ON implicado.id_perfil = perfilimplicado.id_perfil
+		LEFT JOIN municipio ON municipio.id_mcpio = informante.id_ciudad 
+		
+		WHERE  fechaRegistro >= ?   AND  fechaRegistro <= ?
+		 
+		 AND  municipio.id_mcpio = ?
+		
+		 AND  SOLISALAD_SOLICITUD.id_estado = ?
+		 
+		 AND  implicado.id_perfil = ?
+			 
+     ]]>
+	</sql>
+</custom-sql>

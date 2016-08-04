@@ -1,0 +1,242 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="la.netco.solicitudes_sdisc.model.model.impl.CiudadModelImpl">
+		<attributes>
+			<id name="id_ciudad" />
+			<basic name="nombre" />
+			<basic name="id_departamento" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.solicitudes_sdisc.model.model.impl.DelegadoModelImpl">
+		<attributes>
+			<id name="id_delegado" />
+			<basic name="nombre" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.solicitudes_sdisc.model.model.impl.DepartamentoModelImpl">
+		<attributes>
+			<id name="id_departamento" />
+			<basic name="nombre" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.solicitudes_sdisc.model.model.impl.EntidadModelImpl">
+		<attributes>
+			<id name="codigo">
+				<column name="A051CODIENTI" />
+			</id>
+			<basic name="nombre">
+				<column name="A051DESCENTI" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.solicitudes_sdisc.model.model.impl.EspecialidadModelImpl">
+		<attributes>
+			<id name="codigo">
+				<column name="A062CODIESPE" />
+			</id>
+			<basic name="nombre">
+				<column name="A062DESCESPE" />
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.solicitudes_sdisc.model.model.impl.EstadoModelImpl">
+		<attributes>
+			<id name="id_estado" />
+			<basic name="nombre" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.solicitudes_sdisc.model.model.impl.FechaNoHabilModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID_" />
+			</id>
+			<basic name="fecha">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="nombre" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.solicitudes_sdisc.model.model.impl.ImplicadoModelImpl">
+		<attributes>
+			<id name="id_implicado" />
+			<basic name="nombre" />
+			<basic name="despacho_entidad" />
+			<basic name="id_perfil" />
+			<basic name="id_ciudad" />
+			<basic name="cod_entidad" />
+			<basic name="cod_especialidad" />
+			<basic name="id_delegado" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.solicitudes_sdisc.model.model.impl.ParametrosModelImpl">
+		<attributes>
+			<id name="id">
+				<column name="ID_" />
+			</id>
+			<basic name="tiempo_proximo_caducar" />
+			<basic name="tiempo_caducidad" />
+			<basic name="email_resposable" />
+			<basic name="mensaje_email" />
+			<basic name="asunto_email" />
+			<basic name="repositoryId" />
+			<basic name="folderId" />
+			<basic name="userRepositoryId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.solicitudes_sdisc.model.model.impl.PerfilImplicadoModelImpl">
+		<attributes>
+			<id name="id_perfil" />
+			<basic name="nombre" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.solicitudes_sdisc.model.model.impl.ResponsableRespuestaModelImpl">
+		<attributes>
+			<id name="id_responsable" />
+			<basic name="respuesta" />
+			<basic name="fecha_respuesta">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="nombre_usuario" />
+			<basic name="id_solicitud" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.solicitudes_sdisc.model.model.impl.SolicitanteModelImpl">
+		<attributes>
+			<id name="id_solicitante" />
+			<basic name="nombres" />
+			<basic name="apellidos" />
+			<basic name="num_documento" />
+			<basic name="telefono" />
+			<basic name="email" />
+			<basic name="direccion" />
+			<basic name="id_tipo_doc" />
+			<basic name="id_ciudad" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.solicitudes_sdisc.model.model.impl.SolicitudModelImpl">
+		<attributes>
+			<id name="id_solicitud" />
+			<basic name="hechos" />
+			<basic name="pruebas" />
+			<basic name="id_estado" />
+			<basic name="id_implicado" />
+			<basic name="id_solicitante" />
+			<basic name="fechaRegistro">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="la.netco.solicitudes_sdisc.model.model.impl.TipoDocumentoModelImpl">
+		<attributes>
+			<id name="id_tipo_doc">
+				<column name="ID_TIPO" />
+			</id>
+			<basic name="nombre" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="la.netco.solicitudes_sdisc.model.model.impl.CiudadImpl" name="Ciudad">
+		<table name="GEO_CIUDAD" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.solicitudes_sdisc.model.model.impl.DelegadoImpl" name="Delegado">
+		<table name="SOLISALAD_DELEGADO" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.solicitudes_sdisc.model.model.impl.DepartamentoImpl" name="Departamento">
+		<table name="GEO_DEPARTAMENTO" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.solicitudes_sdisc.model.model.impl.EntidadImpl" name="Entidad">
+		<table name="T051BAENTIGENE" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.solicitudes_sdisc.model.model.impl.EspecialidadImpl" name="Especialidad">
+		<table name="T062BAESPEGENE" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.solicitudes_sdisc.model.model.impl.EstadoImpl" name="Estado">
+		<table name="SOLISALAD_ESTADO" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.solicitudes_sdisc.model.model.impl.FechaNoHabilImpl" name="FechaNoHabil">
+		<table name="SOLISALAD_FECHA_NO_HABIL" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.solicitudes_sdisc.model.model.impl.ImplicadoImpl" name="Implicado">
+		<table name="SOLISALAD_IMPLICADO" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.solicitudes_sdisc.model.model.impl.ParametrosImpl" name="Parametros">
+		<table name="SOLISALAD_PARAMETROS" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.solicitudes_sdisc.model.model.impl.PerfilImplicadoImpl" name="PerfilImplicado">
+		<table name="SOLISALAD_PERFIL_IMPL" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.solicitudes_sdisc.model.model.impl.ResponsableRespuestaImpl" name="ResponsableRespuesta">
+		<table name="SOLISALAD_RESPONSABLE_RESPUESTA" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.solicitudes_sdisc.model.model.impl.SolicitanteImpl" name="Solicitante">
+		<table name="SOLISALAD_SOLICITANTE" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.solicitudes_sdisc.model.model.impl.SolicitudImpl" name="Solicitud">
+		<table name="SOLISALAD_SOLICITUD" />
+		<attributes />
+	</entity>
+	<entity class="la.netco.solicitudes_sdisc.model.model.impl.TipoDocumentoImpl" name="TipoDocumento">
+		<table name="SOLISALAD_TIPO_DOCUMENTO" />
+		<attributes />
+	</entity>
+</entity-mappings>

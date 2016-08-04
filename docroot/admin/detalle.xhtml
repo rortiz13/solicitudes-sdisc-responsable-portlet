@@ -1,0 +1,105 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html" template="layouts/template.xhtml">
+	<ui:define name="content">
+
+
+		<f:metadata>
+			<f:event type="preRenderView" listener="#{adminSolicitudesBean.cargarObjeto}" />
+		</f:metadata>
+
+
+		<div class="spacer15"></div>
+		<h:form style="padding-bottom: 3px;" id="formActualizar">
+			<p:panel header="#{i18n['solicitudes-sdisc-solicitante-datos-informante']}">
+
+				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
+					columnClasses="columnLabelsDetalle,columnDatosDetalle">
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-nombres']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.solicitante.nombres}" />
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-apellidos']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.solicitante.apellidos}" />
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-tipo-documento']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.tipoDocSolicitante.nombre}" />
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-num-documento']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.solicitante.num_documento}" />
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-telefono-solicitante']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.solicitante.telefono}" />
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-email-solicitante']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.solicitante.email}" />
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-direccion-solicitante']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.solicitante.direccion}" />
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-departamento']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.departamentoSolicitante.nombre}" />
+
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-ciudad']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.ciudadSolicitante.nombre}" />
+
+				</h:panelGrid>
+
+			</p:panel>
+
+			<br />
+
+			<p:panel header="#{i18n['solicitudes-sdisc-solicitante-datos-implicado']}">
+
+				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
+					columnClasses="columnLabelsDetalle,columnDatosDetalle">
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-nombre-implicado']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.implicado.nombre}" />
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-perfil-implicado']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.perfil.nombre}" />
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-despacho']}" rendered="#{!adminSolicitudesBean.perfilJuezMagistradoAbogado}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.implicado.despacho_entidad}" rendered="#{!adminSolicitudesBean.perfilJuezMagistradoAbogado}" />
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-responsable-entidad']}" rendered="#{adminSolicitudesBean.perfilJuezMagistrado}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.entidadImplicado.nombre}" rendered="#{adminSolicitudesBean.perfilJuezMagistrado}" />
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-responsable-especialidad']}" rendered="#{adminSolicitudesBean.perfilJuezMagistrado}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.especialidadImplicado.nombre}" rendered="#{adminSolicitudesBean.perfilJuezMagistrado}" />
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-responsable-delegado-ante']}" rendered="#{adminSolicitudesBean.perfilFiscal}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.delegadoImplicado.nombre}" rendered="#{adminSolicitudesBean.perfilFiscal}" />
+
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-departamento']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.departamentoImplicado.nombre}" />
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-ciudad']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.ciudadImplicado.nombre}" />
+
+						
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-hechos']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.hechos}" />
+
+					<h:outputText value="#{i18n['solicitudes-sdisc-solicitante-pruebas']}" />
+					<h:outputText value="#{adminSolicitudesBean.registroSelecionado.pruebas}" />
+
+
+				</h:panelGrid>
+
+			</p:panel>
+			
+			<br />
+
+			<p:panel header="#{i18n['solicitudes-sdisc-responsable-anexos']}">
+				<p:dataList rendered="#{!empty adminSolicitudesBean.urlArchivos}" value="#{adminSolicitudesBean.urlArchivos}" var="file">
+					<h:outputLink value="#{file.url}"><h:outputText value="#{file.nombre}" /></h:outputLink>			
+				</p:dataList>
+			</p:panel>
+			
+		
+		</h:form>
+	</ui:define>
+</ui:composition>

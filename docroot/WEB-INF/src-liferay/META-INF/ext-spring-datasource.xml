@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<beans default-destroy-method="destroy" default-init-method="afterPropertiesSet"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="entHibernateSessionFactory" class="com.liferay.portal.kernel.spring.util.SpringFactoryUtil"
+		factory-method="newBean">
+		<constructor-arg
+			value="com.liferay.portal.spring.hibernate.PortletHibernateConfiguration" />
+		<constructor-arg>
+			<map>
+				<entry key="dataSource" value-ref="csjDBDatasourceEntidades" />
+			</map>
+		</constructor-arg>
+	</bean>
+	<bean id="entSessionFactory" class="com.liferay.portal.kernel.spring.util.SpringFactoryUtil"
+		factory-method="newBean">
+		<constructor-arg
+			value="com.liferay.portal.dao.orm.hibernate.PortletSessionFactoryImpl" />
+		<constructor-arg>
+			<map>
+				<entry key="dataSource" value-ref="csjDBDatasourceEntidades" />
+				<entry key="sessionFactoryClassLoader" value-ref="portletClassLoader" />
+				<entry key="sessionFactoryImplementor" value-ref="entHibernateSessionFactory" />
+			</map>
+		</constructor-arg>
+	</bean>
+	<bean id="entTransactionManager" class="com.liferay.portal.kernel.util.InfrastructureUtil"
+		factory-method="getTransactionManager" />
+
+
+
+
+	<bean id="csjDBDatasourceEntidades"
+		class="org.springframework.jdbc.datasource.LazyConnectionDataSourceProxy"
+		lazy-init="true">
+		<property name="targetDataSource">
+			<ref bean="csjDataSourceTargetEntidades" />
+		</property>
+	</bean>
+
+	<bean id="csjDataSourceTargetEntidades" class="com.liferay.portal.dao.jdbc.util.DataSourceFactoryBean">
+		<property name="propertyPrefix" value="jdbc.csjdbconfig." />
+	</bean>
+
+</beans>
